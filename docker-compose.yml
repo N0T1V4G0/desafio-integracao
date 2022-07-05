@@ -19,6 +19,7 @@ services:
       MYSQL_USER: root
       MYSQL_PASSWORD: password
       MYSQL_HOST: db
+      PORT: 3000
 
   db:
     container_name: desafio_integracao_db
