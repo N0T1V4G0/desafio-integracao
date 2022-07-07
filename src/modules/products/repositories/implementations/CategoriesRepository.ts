@@ -12,6 +12,10 @@ class CategoriesRepository implements ICategoriesRepository {
   async list(): Promise<ICategory[]> {
     return Category.findAll() as unknown as ICategory[];
   }
+
+  async find(id: number): Promise<ICategory> {
+    return Category.findByPk(id) as unknown as ICategory;
+  }
 }
 
 export { CategoriesRepository };
