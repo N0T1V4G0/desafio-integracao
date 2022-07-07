@@ -8,6 +8,10 @@ class CategoriesRepository implements ICategoriesRepository {
     const { codigo, titulo, status } = category;
     return Category.create({ codigo, titulo, status }) as unknown as ICategory;
   }
+
+  async list(): Promise<ICategory[]> {
+    return Category.findAll() as unknown as ICategory[];
+  }
 }
 
 export { CategoriesRepository };
