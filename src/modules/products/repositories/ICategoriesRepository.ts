@@ -7,6 +7,7 @@ interface ICategoriesRepository {
   list(): Promise<ICategory[]>;
   find(id: number): Promise<ICategory>;
   update(category: UpdateCategoryDTO): Promise<number>;
+  delete(id: number): Promise<void>;
 }
 
 export { ICategoriesRepository };

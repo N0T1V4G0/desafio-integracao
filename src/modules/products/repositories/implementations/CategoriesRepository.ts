@@ -26,6 +26,10 @@ class CategoriesRepository implements ICategoriesRepository {
     );
     return affectedCount as unknown as number;
   }
+
+  async delete(id: number): Promise<void> {
+    await Category.destroy({ where: { id } });
+  }
 }
 
 export { CategoriesRepository };
