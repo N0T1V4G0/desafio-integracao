@@ -11,7 +11,6 @@ class CreateCategoryController {
       const category = await this.createCategoryService.execute(req.body);
       return res.status(201).json(category);
     } catch (e) {
-      console.log(e);
       next(e);
     }
   }
