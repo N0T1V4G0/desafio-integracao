@@ -17,8 +17,12 @@ class ProductsRepository implements IProductsRepository {
     return newProduct;
   }
 
-  list(): Promise<IProduct[]> {
+  async list(): Promise<IProduct[]> {
     return Product.findAll();
+  }
+
+  async find(id: number): Promise<IProduct> {
+    return Product.findOne({ where: { id } }) as unknown as IProduct;
   }
 }
 
