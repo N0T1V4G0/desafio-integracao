@@ -16,6 +16,10 @@ class ProductsRepository implements IProductsRepository {
     });
     return newProduct;
   }
+
+  list(): Promise<IProduct[]> {
+    return Product.findAll();
+  }
 }
 
 export { ProductsRepository };

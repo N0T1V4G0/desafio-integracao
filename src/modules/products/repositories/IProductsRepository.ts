@@ -3,6 +3,7 @@ import { IProduct } from '../entities/IProduct';
 
 interface IProductsRepository {
   create(product: CreateProductDTO): Promise<IProduct>;
+  list(): Promise<IProduct[]>;
 }
 
 export { IProductsRepository };
