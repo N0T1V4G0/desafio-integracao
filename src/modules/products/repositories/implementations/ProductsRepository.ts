@@ -33,6 +33,10 @@ class ProductsRepository implements IProductsRepository {
       { where: { id } },
     ) as unknown as number;
   }
+
+  async delete(id: number): Promise<void> {
+    await Product.destroy({ where: { id } });
+  }
 }
 
 export { ProductsRepository };
