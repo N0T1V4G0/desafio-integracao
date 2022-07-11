@@ -2,6 +2,7 @@ import { Router } from 'express';
 import { validateCreateProduct } from '../middlewares/validateCreateProduct';
 import { validateUpdateProduct } from '../middlewares/validateUpdateProduct';
 import { createProductController } from '../modules/products/use-cases/create-product';
+import { deleteProductController } from '../modules/products/use-cases/delete-product';
 import { findProductController } from '../modules/products/use-cases/find-product';
 import { listProductsController } from '../modules/products/use-cases/list-products';
 import { updateProductController } from '../modules/products/use-cases/update-products';
@@ -22,6 +23,10 @@ productRouter.get('/:id', (req, res, next) => {
 
 productRouter.patch('/:id', validateUpdateProduct, (req, res, next) => {
   updateProductController.handle(req, res, next);
+});
+
+productRouter.delete('/:id', (req, res, next) => {
+  deleteProductController.handle(req, res, next);
 });
 
 export { productRouter };
