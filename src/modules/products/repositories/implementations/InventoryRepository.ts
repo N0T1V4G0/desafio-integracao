@@ -1,5 +1,6 @@
 import { Inventory } from '../../../../database/models/inventory';
 import { Product } from '../../../../database/models/product';
+import { UpdateInventoryDTO } from '../../dtos/inventory/UpdateInventoryDTO';
 import { IInventory } from '../../entities/IInventory';
 import { IInventoryRepository } from '../IInventoryRepository';
 
@@ -18,6 +19,17 @@ class InventoryRepository implements IInventoryRepository {
       where: { idProduto: productID },
       include: { model: Product, as: 'produto' },
     }) as unknown as IInventory;
+  }
+
+  async update(
+    productID: number,
+    inventory: UpdateInventoryDTO,
+  ): Promise<void> {
+    const { quantidade, reserva, status } = inventory;
+    await Inventory.update(
+      { quantidade, reserva, status },
+      { where: { idProduto: productID } },
+    );
   }
 }
 
