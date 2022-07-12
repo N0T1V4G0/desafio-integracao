@@ -44,4 +44,8 @@ productRouter.patch(
   },
 );
 
+productRouter.delete('/:id/estoque', (req, res, next) => {
+  return res.status(501).json({ message: 'Not Implemented' });
+});
+
 export { productRouter };
