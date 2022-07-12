@@ -12,16 +12,17 @@ services:
     volumes:
       - ./:/app
     depends_on:
-      - db
+      - mysql_db
+      - postgres_db
     ports:
       - 3000:3000
     environment:
       MYSQL_USER: root
       MYSQL_PASSWORD: password
-      MYSQL_HOST: db
+      MYSQL_HOST: mysql_db
       PORT: 3000
 
-  db:
+  mysql_db:
     container_name: desafio_integracao_db
     image: mysql:8.0.21
     restart: always
@@ -30,3 +31,16 @@ services:
       - 33060:33060
     environment:
       MYSQL_ROOT_PASSWORD: password
+      MYSQL_USER: root
+      MYSQL_DATABASE: mysql_db
+
+  postgres_db:
+    container_name: desafio_integracao_postgres
+    image: postgres
+    restart: always
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_PASSWORD: password
+      POSTGRES_USER: root
+      POSTGRES_DB: postgres_db
